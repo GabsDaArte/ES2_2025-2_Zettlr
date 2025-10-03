@@ -160,7 +160,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codemirror/autocomplete@npm:^6.0.0, @codemirror/autocomplete@npm:^6.18.7, @codemirror/autocomplete@npm:^6.3.2, @codemirror/autocomplete@npm:^6.7.1":
+"@codemirror/autocomplete@npm:^6.0.0, @codemirror/autocomplete@npm:^6.3.2, @codemirror/autocomplete@npm:^6.7.1":
   version: 6.18.7
   resolution: "@codemirror/autocomplete@npm:6.18.7"
   dependencies:
@@ -169,6 +169,18 @@ __metadata:
     "@codemirror/view": "npm:^6.17.0"
     "@lezer/common": "npm:^1.0.0"
   checksum: 10/e50e3345d7d33e762d9abd2e6b1ea4ff54afe1630310464a5ddb42cab52fd5bac783ec0dc8a328cb746be6a7f9f711b6fcd8ef311af123511e8307b4c056cb9d
+  languageName: node
+  linkType: hard
+
+"@codemirror/autocomplete@npm:^6.19.0":
+  version: 6.19.0
+  resolution: "@codemirror/autocomplete@npm:6.19.0"
+  dependencies:
+    "@codemirror/language": "npm:^6.0.0"
+    "@codemirror/state": "npm:^6.0.0"
+    "@codemirror/view": "npm:^6.17.0"
+    "@lezer/common": "npm:^1.0.0"
+  checksum: 10/791def23bcf5cc278e821a15462f73233b74c2c40db52a95c41f8b3bff693276e2ebaf0fdac892a44d86a6697a55c352efe3a608ccdf25ee7bbf7ac6cce179ea
   languageName: node
   linkType: hard
 
@@ -15048,7 +15060,7 @@ __metadata:
   resolution: "zettlr@workspace:."
   dependencies:
     "@cds/core": "npm:^6.16.1"
-    "@codemirror/autocomplete": "npm:^6.18.7"
+    "@codemirror/autocomplete": "npm:^6.19.0"
     "@codemirror/collab": "npm:^6.1.1"
     "@codemirror/commands": "npm:^6.8.1"
     "@codemirror/lang-css": "npm:^6.3.1"
