@@ -1,0 +1,36 @@
+# Configure the Boring Cyborg App. Cf.: https://github.com/kaxil/boring-cyborg
+
+# Let's greet new users!
+firstPRWelcomeComment: >
+  Thank you for opening your first PR! 🎉 We would like to thank you already for
+  your contribution. If everything checks out, we'll make sure to review the PR
+  as soon as possible and give feedback. Please note a few things:
+  
+  * For every PR, the automated pipeline will run the linter and unit tests on
+    your code. Should these fail, we will not merge your PR.
+  * Activate your notifications and check your inbox regularly to respond to our
+    reviews and/or comments.
+  
+  We are glad for every improvement that makes its way into the app, so we look
+  forward to collaborating on merging this PR.
+
+# Comment to be posted to congratulate user on their first merged PR
+firstPRMergeComment: >
+  Your PR got merged! Welcome to the party! 🔥
+
+# Comment to be posted to on first time issues
+firstIssueWelcomeComment: |
+  Thanks so much for opening up your first issue here! 🎉 We will respond soon
+  to help fix your issue or address your request, so please keep your
+  notifications turned on so that you can answer any additional questions we may
+  have.
+
+  We want to make Zettlr better for everyone, but we cannot guarantee to
+  implement a feature request, and cannot provide any ETA on when we are able to
+  get to your issue.
+
+  > NOTE: Please do not share screen captures of buggy behavior on YouTube. If
+  > you have uploaded a video on YouTube and linked it already, don't worry!
+  > But we would like to ask you to remove the video from YouTube, and upload it
+  > directly to GitHub instead, by editing your comment.
+  > [Read more here](https://github.com/Zettlr/Zettlr/discussions/4783).
