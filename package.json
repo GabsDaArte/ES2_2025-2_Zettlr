@@ -175,7 +175,7 @@
     "electron-devtools-installer": "^4.0.0",
     "eslint": "^9.35.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-n": "^17.21.3",
+    "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-vue": "^10.4.0",
     "jsdom": "^26.1.0",
