@@ -29,10 +29,17 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - run: npm ci
-    - run: npm test
-    - run: npm run package
-    - uses: actions/upload-artifact@v3
+    - name: Instalar Dependências
+      run: npm ci
+        
+    - name: Executar Testes
+      run: npm test
+        
+    - name: Empacotar Aplicação
+      run: npm run package
+      
+    - uses: actions/upload-artifact@v4 # Use a v4, que é a mais recente
+      if: success() || failure() # Publica o artefato mesmo se houver falha de teste/package
       with:
         name: zettlr-package-${{ matrix.os }}-${{ matrix.node-version }}
         path: out/ 
