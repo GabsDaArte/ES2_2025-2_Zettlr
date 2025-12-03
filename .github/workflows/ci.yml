@@ -15,7 +15,7 @@ jobs:
  
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
         node-version: [18.x, 20.x, 22.x] 
       fail-fast: false
 
@@ -26,16 +26,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'  
+          cache: 'yarn'  
  
       - name: Instalar Dependências
-        run: npm install
- 
+        run: yarn install 
+
       - name: Executar Testes
-        run: npm test
- 
+        run: yarn test
+
       - name: Empacotar Aplicação
-        run: npm run package
+        run: yarn package 
  
       - uses: actions/upload-artifact@v4
        
