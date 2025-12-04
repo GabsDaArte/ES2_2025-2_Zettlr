@@ -1,0 +1,50 @@
+name: configurando o github actions...
+ 
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ] 
+  workflow_dispatch:
+
+jobs: 
+  build:
+ 
+    runs-on: ${{ matrix.os }}
+ 
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [20.x, 22.x] 
+      fail-fast: false
+
+    steps: 
+      - uses: actions/checkout@v4
+ 
+      - name: Configurar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'  
+  
+      - name: Instalar Dependências
+        run: yarn install 
+
+      - name: Corrigir Permissão do Script Pandoc
+        if: runner.os != 'Windows'
+        run: chmod +x ./scripts/get-pandoc.sh
+
+      - name: Executar Testes
+        run: yarn test
+
+      - name: Empacotar Aplicação
+        run: yarn package 
+ 
+      - uses: actions/upload-artifact@v4
+       
+        if: success() || failure() 
+        with:
+          name: zettlr-package-${{ matrix.os }}-${{ matrix.node-version }}
+          path: out/ 
+          retention-days: 5
