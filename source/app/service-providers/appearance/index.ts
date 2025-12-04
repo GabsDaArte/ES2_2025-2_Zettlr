@@ -116,9 +116,9 @@ export default class AppearanceProvider extends ProviderContract {
               // Calculate the contrast before returning
               const dark = '333333ff'
               const light = 'ffffffff'
-              const r = parseInt(accentColor.substring(0, 2), 16) // hexToR
-              const g = parseInt(accentColor.substring(2, 4), 16) // hexToG
-              const b = parseInt(accentColor.substring(4, 6), 16) // hexToB
+              const r = Number.parseInt(accentColor.substring(0, 2), 16) // hexToR
+              const g = Number.parseInt(accentColor.substring(2, 4), 16) // hexToG
+              const b = Number.parseInt(accentColor.substring(4, 6), 16) // hexToB
               const ratio = (r * 0.299) + (g * 0.587) + (b * 0.114)
               const threshold = 186 // NOTE: We can adapt this later on
               return {
@@ -189,10 +189,10 @@ export default class AppearanceProvider extends ProviderContract {
     const start = autoDarkModeStart.split(':')
     const end = autoDarkModeEnd.split(':')
 
-    this._startHour = parseInt(start[0], 10)
-    this._startMin = parseInt(start[1], 10)
-    this._endHour = parseInt(end[0], 10)
-    this._endMin = parseInt(end[1], 10)
+    this._startHour = Number.parseInt(start[0], 10)
+    this._startMin = Number.parseInt(start[1], 10)
+    this._endHour = Number.parseInt(end[0], 10)
+    this._endMin = Number.parseInt(end[1], 10)
 
     // Make sure the times differ.
     if (
