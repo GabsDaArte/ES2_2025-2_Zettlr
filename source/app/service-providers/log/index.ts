@@ -71,7 +71,7 @@ export default class LogProvider extends ProviderContract {
       const { command } = payload
 
       if (command === 'retrieve-log-chunk') {
-        const nextIndex = parseInt(String(payload.nextIndex), 10)
+        const nextIndex = Number.parseInt(String(payload.nextIndex), 10)
         if (nextIndex >= this._log.length || nextIndex < 0) {
           return []
         }

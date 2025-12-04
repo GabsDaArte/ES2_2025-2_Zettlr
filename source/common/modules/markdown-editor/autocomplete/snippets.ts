@@ -220,7 +220,7 @@ async function template2snippet (state: EditorState, template: string, rangeOffs
 
   let match: null|RegExpExecArray = null
   while ((match = tabStopRE.exec(finalText)) !== null) {
-    const position = parseInt(match[1] ?? match[2], 10)
+    const position = Number.parseInt(match[1] ?? match[2], 10)
     const replacementString: string|undefined = match[3]
     const from = rangeOffset + match.index
     const to = (replacementString !== undefined) ? from + replacementString.length : from
