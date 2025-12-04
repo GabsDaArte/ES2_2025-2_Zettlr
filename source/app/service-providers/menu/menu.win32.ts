@@ -14,7 +14,7 @@
  * END HEADER
  */
 
-import { app, type MenuItemConstructorOptions, shell, dialog, type BrowserWindow } from 'electron'
+import { app, BrowserWindow, type MenuItemConstructorOptions, shell, dialog, clipboard } from 'electron'
 import { trans } from '@common/i18n-main'
 import path from 'path'
 import type RecentDocumentsProvider from '@providers/recent-docs'
@@ -84,7 +84,7 @@ export default function getMenu (
     // FILE MENU
     {
       id: 'file-menu',
-      label: trans('File'),
+      label: 'File',
       submenu: [
         {
           label: trans('New file…'),
@@ -310,10 +310,34 @@ export default function getMenu (
       label: trans('Edit'),
       submenu: [
         {
-          id: 'menu.undo',
-          accelerator: 'Ctrl+Z',
-          label: trans('Undo'),
-          role: 'undo'
+          label: 'Insert Timestamp',
+          accelerator: 'CmdOrCtrl+Shift+D',
+          click: function (_menuitem, focusedWindow) {
+            // 1. Tenta pegar a janela focada. Se focusedWindow for null, pega a primeira da lista (Fallback).
+            const win = (focusedWindow as BrowserWindow | undefined) || BrowserWindow.getAllWindows()[0]
+
+            // 2. Se mesmo assim não achar janela, mostra erro visual (DEBUG).
+            if (win === undefined) {
+              dialog.showErrorBox('Erro', 'O botão funcionou, mas o Zettlr não encontrou a janela principal!')
+              return
+            }
+
+            // 3. Gera a data formatada
+            const now = new Date()
+            const timeString = now.getFullYear() + '-' +
+              String(now.getMonth() + 1).padStart(2, '0') + '-' +
+              String(now.getDate()).padStart(2, '0') + ' ' +
+              String(now.getHours()).padStart(2, '0') + ':' +
+              String(now.getMinutes()).padStart(2, '0')
+
+            // 4. Mágica: Copia para o Clipboard e Cola
+            // Isso contorna problemas de foco e evita o erro de Promise do insertText
+            clipboard.writeText(timeString)
+            win.webContents.paste()
+          }
+        },
+        {
+          type: 'separator'
         },
         {
           id: 'menu.redo',
