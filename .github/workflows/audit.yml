@@ -49,21 +49,30 @@ jobs:
         mv tmp.json audit_result.json
         echo "count=$(jq length audit_result.json)" >> $GITHUB_ENV
         jq -r '.[] | .value as $v | .children += { package: $v } | .children | ("Package: \(.package)", "  Version(s) \(."Vulnerable Versions")", "  \(.Issue) (Severity: \(.Severity))", "  URL: \(.URL)")' audit_result.json > audit_result.txt
-- name: Report results
+- name: Format results
+      # NOTE: The unholy sausage in the third line essentially uses jq to
+      # condense the most important info into a human-readable txt file. This is
+      # merely meant as a canary; the maintainers should absolutely run the
+      # command locally once informed to get all information if necessary.
+      run: |
+        jq --slurp '.' audit_result.json > tmp.json
+        mv tmp.json audit_result.json
+        echo "count=$(jq length audit_result.json)" >> $GITHUB_ENV
+        jq -r '.[] | .value as $v | .children += { package: $v } | .children | ("Package: \(.package)", "  Version(s) \(."Vulnerable Versions")", "  \(.Issue) (Severity: \(.Severity))", "  URL: \(.URL)")' audit_result.json > audit_result.txt
+    - name: Report results
       env:
         WEBHOOK: ${{ secrets.DISCORD_AUDIT_WEBHOOK }}
       run: |
         AUDIT_CONTENT=$(<audit_result.txt)
         echo '## Repository Audit Results' > message.txt
         echo '' >> message.txt
-        echo "A new audit has been run against Zettlr’s `yarn.lock` file. This happens automatically if dependencies have changed, or if a maintainer has manually requested an audit. There have been **${{env.count}} results**." >> message.txt
+        echo "A new audit has been run against Zettlr’s \`yarn.lock\` file. This happens automatically if dependencies have changed, or if a maintainer has manually requested an audit. There have been **${{env.count}} results**." >> message.txt
         echo '' >> message.txt
         echo "For the full results (${#AUDIT_CONTENT} characters), please see the summary of the run: https://github.com/Zettlr/Zettlr/actions/runs/${{ github.run_id }}." >> message.txt
         echo '' >> message.txt
         echo '**Disclaimer**: Many results are not relevant for the app’s security, and the pure number of results cannot be used to infer whether there exists a security risk for Zettlr and its users. The maintainers are able to infer whether a result indicates a critical issue that needs fixing.' >> message.txt
         BODY=$(jq -n --arg msg "$(<message.txt)" '{ content: $msg }')
         
-        # AQUI ESTA A CORRECAO:
         if [ -n "$WEBHOOK" ]; then
           curl -d "$BODY" -H "Content-Type: application/json" -X POST "$WEBHOOK"
         else
