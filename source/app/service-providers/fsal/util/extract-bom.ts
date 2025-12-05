@@ -36,18 +36,18 @@ export default function extractBOM (text: string): string {
   if (b1 === 239 && b2 === 187 && b3 === 191) {
     // Contains a UTF-8 BOM (EF BB BF)
     return String.fromCharCode(b1, b2, b3)
-  } else if (b1 === 254 && b2 === 255) {
-    // Contains a UTF-16 BE BOM (FE FF)
-    return String.fromCharCode(b1, b2)
-  } else if (b1 === 255 && b2 === 254) {
-    // Contains a UTF-16 LE BOM (FF FE)
-    return String.fromCharCode(b1, b2)
   } else if (b1 === 0 && b2 === 0 && b3 === 254 && b4 === 255) {
     // Contains a UTF-32 BE BOM (00 00 FE FF)
     return String.fromCharCode(b1, b2, b3, b4)
   } else if (b1 === 255 && b2 === 254 && b3 === 0 && b4 === 0) {
     // Contains a UTF-32 LE BOM (FF FE 00 00)
     return String.fromCharCode(b1, b2, b3, b4)
+  } else if (b1 === 254 && b2 === 255) {
+    // Contains a UTF-16 BE BOM (FE FF)
+    return String.fromCharCode(b1, b2)
+  } else if (b1 === 255 && b2 === 254) {
+    // Contains a UTF-16 LE BOM (FF FE)
+    return String.fromCharCode(b1, b2)
   } else if (b1 === 43 && b2 === 47 && b3 === 118) {
     // Contains a UTF-7 BOM (2B 2F 76)
     return String.fromCharCode(b1, b2, b3)

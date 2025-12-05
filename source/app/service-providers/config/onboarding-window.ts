@@ -108,7 +108,7 @@ export async function showOnboardingWindow (config: ConfigProvider, logger: LogP
 
     onboardingWindow.on('unresponsive', () => {
       onboardingWindow.destroy()
-      reject()
+      reject(new Error('Onboarding window became unresponsive'))
     })
 
     onboardingWindow.on('closed', () => {
