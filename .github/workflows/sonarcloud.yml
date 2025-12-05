@@ -12,6 +12,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 
+      - name: Install dependencies 
+        run: yarn install 
+      - name: Run Tests with Coverage 
+        run: yarn coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@da57fa82592e75ccfacdb06c67b70b77c1ed960d
         env:
