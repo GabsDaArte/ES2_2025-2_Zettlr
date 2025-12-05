@@ -49,7 +49,7 @@ jobs:
         mv tmp.json audit_result.json
         echo "count=$(jq length audit_result.json)" >> $GITHUB_ENV
         jq -r '.[] | .value as $v | .children += { package: $v } | .children | ("Package: \(.package)", "  Version(s) \(."Vulnerable Versions")", "  \(.Issue) (Severity: \(.Severity))", "  URL: \(.URL)")' audit_result.json > audit_result.txt
-- name: Format results
+    - name: Format results
       # NOTE: The unholy sausage in the third line essentially uses jq to
       # condense the most important info into a human-readable txt file. This is
       # merely meant as a canary; the maintainers should absolutely run the
