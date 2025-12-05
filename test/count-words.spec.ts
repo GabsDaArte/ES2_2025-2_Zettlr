@@ -89,7 +89,8 @@ const countWordsTesters = [
     expectedWords: 5,
     expectedChars: 15
   },
-  { input: '**Zettlr**では*Markdown*を使います。',
+  {
+    input: '**Zettlr**では*Markdown*を使います。',
     locale: 'ja',
     expectedWords: 6,
     expectedChars: 22
@@ -113,3 +114,4 @@ describe('Utility#countWords()', function () {
     })
   }
 })
+
