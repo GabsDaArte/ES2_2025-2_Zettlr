@@ -32,6 +32,7 @@
     "update:csl": "node scripts/update-csl.mjs",
     "update:citation": "node scripts/update-citation.mjs",
     "test": "mocha",
+    "coverage": "nyc --reporter=lcov --reporter=text yarn test",
     "test-gui": "cross-env NODE_ENV=develop node scripts/test-gui/index.mjs",
     "lint:code": "eslint --cache",
     "lint:types": "vue-tsc --noEmit",
