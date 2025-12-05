@@ -1,3 +1,9 @@
+// Análises do SonarCloud
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=GabsDaArte_ES2_2025-2_Zettlr&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=GabsDaArte_ES2_2025-2_Zettlr)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=GabsDaArte_ES2_2025-2_Zettlr&metric=bugs)](https://sonarcloud.io/summary/new_code?id=GabsDaArte_ES2_2025-2_Zettlr)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=GabsDaArte_ES2_2025-2_Zettlr&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=GabsDaArte_ES2_2025-2_Zettlr)
+
+
 <h1 align="center">
   <a href="https://github.com/Zettlr/Zettlr">
     <img src="https://raw.githubusercontent.com/Zettlr/Zettlr/master/resources/icons/png/256x256.png" alt="Zettlr"/>
