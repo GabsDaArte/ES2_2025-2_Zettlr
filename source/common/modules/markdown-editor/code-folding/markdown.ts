@@ -34,7 +34,7 @@ export const markdownFolding = foldService.of((state, lineStart, _lineEnd) => {
 
     // We need headings to be foldable. We basically just have to search for
     // the next heading of equal level (or below)
-    const level = parseInt(node.type.name.slice(-1), 10)
+    const level = Number.parseInt(node.type.name.slice(-1), 10)
     const allHeadings: SyntaxNode[] = []
     for (let i = level; i > -1; i--) {
       allHeadings.push(...syntaxTree(state).topNode.getChildren(`ATXHeading${i}`))

@@ -203,7 +203,7 @@ export default function searchFile (fileObject: MDFileDescriptor|CodeFileDescrip
 
         return acc
       }, {
-        line: NaN,
+        line: Number.NaN,
         restext: '',
         weight: 0,
         ranges: []
