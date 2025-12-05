@@ -61,7 +61,7 @@ describe('Utility#objectToArray()', function () {
             { id: 1, name: 'tree1', children: [] },
             { id: 2, name: 'tree2', children: [] }
         ]
-        const result = objectToArray(trees, 'children')
+        const result = objectToArray(trees as any, 'children')
         strictEqual(result.length, 2)
         strictEqual(result[0].id, 1)
         strictEqual(result[1].id, 2)
@@ -158,7 +158,7 @@ describe('Utility#objectToArray()', function () {
                 ]
             }
         ]
-        const result = objectToArray(trees, 'children')
+        const result = objectToArray(trees as any, 'children')
         strictEqual(result.length, 4)
         strictEqual(result[0].id, 1)
         strictEqual(result[1].id, 2)
