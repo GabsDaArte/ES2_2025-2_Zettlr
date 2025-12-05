@@ -17,7 +17,7 @@ jobs:
       - name: Run Tests with Coverage 
         run: yarn coverage
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@da57fa82592e75ccfacdb06c67b70b77c1ed960d
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
